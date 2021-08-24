@@ -11,16 +11,14 @@ const App = () => {
   return (
     <>
       <Main darkMode={darkMode}>
-        <DarkModeButton onClick={toggleDarkMode}>
+        {/* <DarkModeButton onClick={toggleDarkMode}>
           {darkMode ? "☀️" : "🌙"}
-        </DarkModeButton>
+        </DarkModeButton> */}
         <Avatar src={AvatarSrc} alt="Avatar" />
         {userData.map((data) => {
           return (
             <>
-              <p style={{ color: darkMode ? "white" : "inherit" }}>
-                {data.bio}
-              </p>
+              <Bio>{data.bio}</Bio>
               <SocialLinks>
                 {data.links.map((link) => (
                   <LinkButton network={link.social} href={link.link} />
@@ -35,10 +33,15 @@ const App = () => {
           );
         })}
       </Main>
-      <Footer>Made with a lot of 🧉 and a little bit of ☕️ too</Footer>
+      <Footer>Proyecto realizado con mucho 🧉 y un poco de ☕️ también</Footer>
     </>
   );
 };
+
+const Bio = styled.p`
+  text-align: center;
+  max-width: 1000px;
+`;
 
 const CustomLinks = styled.div`
   display: flex;
@@ -86,6 +89,7 @@ const Avatar = styled.img`
 
   &:hover {
     border: 5px solid deeppink;
+    box-shadow: 0 0px 10px deeppink;
   }
 `;
 
