@@ -18,6 +18,5 @@ export const ColorModeProvider = ({ children }) => {
 
 export function useColorMode() {
   const context = React.useContext(ColorModeContext);
-  console.log("context", context);
   return context;
 }

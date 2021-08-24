@@ -1,0 +1,39 @@
+[
+  {
+    "name": "Giancarlo Brusca",
+    "avatar": "",
+    "bio": "Frontend Developer",
+    "links": [
+      {
+        "social": "GitHub",
+        "link": "https://github.com/giancarlol"
+      },
+      {
+        "social": "LinkedIn",
+        "link": "https://www.linkedin.com/in/giancarlo-brusca/"
+      },
+      {
+        "social": "Instagram",
+        "link": "https://www.instagram.com/gianb__/"
+      },
+      {
+        "social": "Twitter",
+        "link": "https://twitter.com/gianb_"
+      }
+    ],
+    "customLinks": [
+      {
+        "text": "Mi Portfolio",
+        "link": ""
+      },
+      {
+        "text": "Proyecto",
+        "link": ""
+      },
+      {
+        "text": "Proyecto",
+        "link": ""
+      }
+    ]
+  }
+]

@@ -1,22 +1,47 @@
 import styled from "styled-components";
 import { useColorMode } from "../context/ColorModeContext";
+import { FaGithub, FaLinkedin, FaInstagram, FaTwitter } from "react-icons/fa";
 
-export const LinkButton = ({ children }) => {
+function renderSocialIcon(network) {
+  switch (network) {
+    case "GitHub":
+      return <FaGithub />;
+    case "LinkedIn":
+      return <FaLinkedin />;
+    case "Instagram":
+      return <FaInstagram />;
+    case "Twitter":
+      return <FaTwitter />;
+    default:
+      throw Error(`${network} is not a valid Social Network.`);
+  }
+}
+
+export const LinkButton = ({ href, network, children }) => {
   const { darkMode } = useColorMode();
 
-  return <StyledButton darkMode={darkMode}>{children}</StyledButton>;
+  return (
+    <a href={href} target="_blank">
+      <StyledButton darkMode={darkMode} network={!network}>
+        {network && <span>{renderSocialIcon(network)}</span>}
+        {!network && children}
+      </StyledButton>
+    </a>
+  );
 };
 
 const StyledButton = styled.button`
   cursor: pointer;
 
-  color: ${({ darkMode }) => (darkMode ? "white" : "inherit")};
+  color: ${({ darkMode }) => (darkMode ? "white" : "black")};
   font-weight: bold;
 
-  width: 800px;
-  padding: 10px 0;
+  width: ${(p) => (p.network ? "500px" : "fit-content")};
+  text-align: center;
+  padding: ${(p) => (p.network ? "10px" : "10px 10px")};
 
   border: none;
+  border-radius: 20px;
 
   background-color: transparent;
   box-shadow: ${({ darkMode }) =>
@@ -27,5 +52,10 @@ const StyledButton = styled.button`
     color: white;
     background-color: deeppink;
     box-shadow: 0 0px 10px deeppink;
+  }
+
+  a {
+    color: inherit;
+    text-decoration: none;
   }
 `;

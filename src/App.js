@@ -1,9 +1,9 @@
 import React from "react";
-import ReactDOM from "react-dom";
 import styled from "styled-components";
 import AvatarSrc from "./images/avatar.jpeg";
 import { useColorMode } from "./context/ColorModeContext";
 import { LinkButton, Footer } from "./components";
+import userData from "../data.json";
 
 const App = () => {
   const { darkMode, toggleDarkMode } = useColorMode();
@@ -15,13 +15,46 @@ const App = () => {
           {darkMode ? "☀️" : "🌙"}
         </DarkModeButton>
         <Avatar src={AvatarSrc} alt="Avatar" />
-        <LinkButton>Link a una red</LinkButton>
-        <LinkButton>Link a otra red</LinkButton>
+        {userData.map((data) => {
+          return (
+            <>
+              <p style={{ color: darkMode ? "white" : "inherit" }}>
+                {data.bio}
+              </p>
+              <SocialLinks>
+                {data.links.map((link) => (
+                  <LinkButton network={link.social} href={link.link} />
+                ))}
+              </SocialLinks>
+              <CustomLinks length={data.customLinks.length}>
+                {data.customLinks.map((clink) => (
+                  <LinkButton href={clink.link}>{clink.text}</LinkButton>
+                ))}
+              </CustomLinks>
+            </>
+          );
+        })}
       </Main>
       <Footer>Made with a lot of 🧉 and a little bit of ☕️ too</Footer>
     </>
   );
 };
+
+const CustomLinks = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 20px;
+  height: ${(p) => (p.length > 5 ? "350px" : "fit-content")};
+  overflow: auto;
+  box-shadow: ${(p) =>
+    p.length > 6 ? "inset 0 0 10px rgba(0, 0, 0, 0.2)" : "none"};
+`;
+
+const SocialLinks = styled.div`
+  display: flex;
+  gap: 20px;
+`;
 
 const DarkModeButton = styled.button`
   cursor: pointer;
@@ -40,6 +73,7 @@ const Avatar = styled.img`
   width: 200px;
   height: 200px;
 
+  margin-top: 20px;
   border: 5px solid transparent;
   border-radius: 100%;
 
