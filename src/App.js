@@ -1,12 +1,18 @@
 import React from "react";
 import styled from "styled-components";
 import AvatarSrc from "./images/avatar.jpeg";
+
+import { useUser } from "./auth/hooks";
 import { useColorMode } from "./context/ColorModeContext";
 import { LinkButton, Footer } from "./components";
+
 import userData from "../data.json";
 
 const App = () => {
+  const user = useUser();
   const { darkMode, toggleDarkMode } = useColorMode();
+
+  console.log(user);
 
   return (
     <>
@@ -15,6 +21,7 @@ const App = () => {
           {darkMode ? "☀️" : "🌙"}
         </DarkModeButton> */}
         <Avatar src={AvatarSrc} alt="Avatar" />
+        {user && `Bienvenido, ${user.email}`}
         {userData.map((data) => {
           return (
             <>

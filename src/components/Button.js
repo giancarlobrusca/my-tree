@@ -51,7 +51,7 @@ const StyledButton = styled.button`
   &:hover {
     color: white;
     background-color: deeppink;
-    box-shadow: 0 0px 10px deeppink;
+    box-shadow: 0 0 10px deeppink;
   }
 
   a {
