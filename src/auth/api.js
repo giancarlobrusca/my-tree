@@ -1,8 +1,9 @@
 import { auth } from "../../firebase";
 
 export default {
-  signIn: (email, password) =>
+  register: (email, password) =>
     auth.createUserWithEmailAndPassword(email, password),
-  signOut: () => auth.signOut(),
+  login: (email, password) => auth.signInWithEmailAndPassword(email, password),
+  logout: () => auth.signOut(),
   onChange: (callback) => auth.onAuthStateChanged(callback),
 };
