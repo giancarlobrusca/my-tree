@@ -53,9 +53,4 @@ const StyledButton = styled.button`
     background-color: deeppink;
     box-shadow: 0 0 10px deeppink;
   }
-
-  a {
-    color: inherit;
-    text-decoration: none;
-  }
 `;
